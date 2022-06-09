@@ -115,21 +115,28 @@
     <div class="container-fluid blue-nav">
         <nav>
             <ul class="row justify-content-center">
-                <li class="col-1"><a href="#">男士</a>
+                <li class="col-2"><a href="#">全部</a>
                     <ul>
                         <li><a href="#">上衣</a></li>
-                        <li><a href="#">外套</a></li>
+                        <li><a href="#">褲子</a></li>
                         <li><a href="#">鞋類</a></li>
                     </ul>
                 </li>
-                <li class="col-1"><a href="#">女士</a>
+                <li class="col-2"><a href="#">男士</a>
                     <ul>
                         <li><a href="#">上衣</a></li>
-                        <li><a href="#">外套</a></li>
+                        <li><a href="#">褲子</a></li>
                         <li><a href="#">鞋類</a></li>
                     </ul>
                 </li>
-                <li class="col-1"><a href="#">兒童/青少年</a>
+                <li class="col-2"><a href="#">女士</a>
+                    <ul>
+                        <li><a href="#">上衣</a></li>
+                        <li><a href="#">褲子</a></li>
+                        <li><a href="#">鞋類</a></li>
+                    </ul>
+                </li>
+                <li class="col-2"><a href="#">兒童/青少年</a>
                     <ul>
                         <li><a href="#">上衣</a></li>
                         <li><a href="#">鞋類</a></li>

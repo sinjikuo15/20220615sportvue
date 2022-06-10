@@ -11,8 +11,8 @@
                 <h4>{{title}}</h4>
                 <p>售價：{{ price }}</p>
                 <p>商品描述: {{ description }}</p>
-                <!-- <a href="" type="button" @click="addCart(productId)">加入購物車</a> -->
-                <button type="button" @click="addCart(productId)">加入購物車</button>
+                
+                <button class="add-btn" type="button" @click="addCart($route.params.productId)"> <i class="bi bi-cart-check"></i>加入購物車</button>
             </div>
         </div>
     </div>
@@ -20,12 +20,27 @@
 
 </template>
 
-<style>
+<style scoped>
 .product-wrapper figure{
     max-width: 500px;
 }
 .product{
     width: 100%;
+}
+
+.add-btn{
+    background: linear-gradient(180deg,#fef63a 0,#eec423);
+    padding: 10px 20px;
+    border: 0px;
+    border-radius: 5px;
+}
+.add-btn:hover{    
+    background:linear-gradient(180deg,#fef63a 0,#ab922bdc) ;
+    transition: 0.5s;
+}
+.bi-cart-check{
+    margin-left: 5px;
+    font-size: 20px;
 }
 </style>
 <script>

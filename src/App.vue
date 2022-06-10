@@ -24,11 +24,11 @@
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <figure>
-                            <img class="object-cover"
-                                src="https://static.decathlon.tw/skin/frontend/enterprise/decathlon_tw/img/LogoDecathlon.png"
-                                alt="">
+                        <img class="object-cover"
+                            src="https://static.decathlon.tw/skin/frontend/enterprise/decathlon_tw/img/LogoDecathlon.png"
+                            alt="">
                     </figure>
                 </a>
 
@@ -44,6 +44,12 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item dropdown">
+                                <a class="nav-link" href="products" role="button">
+                                    全部
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+
                                 <a class="nav-link  dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     男士
@@ -115,12 +121,8 @@
     <div class="container-fluid blue-nav">
         <nav>
             <ul class="row justify-content-center">
-                <li class="col-2"><a href="#">全部</a>
-                    <ul>
-                        <li><a href="#">上衣</a></li>
-                        <li><a href="#">褲子</a></li>
-                        <li><a href="#">鞋類</a></li>
-                    </ul>
+                <li class="col-2"><a href="/products">全部</a>
+
                 </li>
                 <li class="col-2"><a href="#">男士</a>
                     <ul>
@@ -147,7 +149,7 @@
         </nav>
     </div>
 
-    <router-view />
+    <router-view v-if="isRouterAlive" />
 
 
     <!-- Footer區域 -->

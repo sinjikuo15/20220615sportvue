@@ -5,6 +5,8 @@ import LoginView from '../views/LoginView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import cartView from '../views/cartView.vue'
 import Product from '../views/ProductView.vue'
+import maleTop from '../views/maleTopView.vue'
+
 
 
 const routes = [
@@ -36,6 +38,11 @@ const routes = [
   {
     path: '/products/:productId/',
     component: Product
+  },
+  {
+    path: '/male-top',
+    name: 'male-top',
+    component: maleTop
   },
   
 ]

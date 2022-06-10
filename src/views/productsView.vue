@@ -31,10 +31,10 @@
                 <div class="row type-content">
                     <!-- 女上衣區 -->
                     <div v-for="shopItem in resultShopList" class="col-6 col-sm-4 col-md-3 saler row">
-                        <figure>
+                        <figure style="max-width:200px">
                             <a href=""><img
                                     :src="shopItem.imageUrl"
-                                    alt="" style="width: 200px; height: 200px">
+                                    alt="" style="max-width: 100%;">
                             </a>
                             <!-- <button class="price-btn" @click="addCart(shopItem.id)">NT$ {{shopItem.price}}</button> -->
                             <router-link :to="`/products/${shopItem.id}`" class="price-btn">詳細資訊</router-link>
@@ -65,16 +65,7 @@ export default {
             resultShopList: []
         }
     },
-    // methods: {
-    //     addCart(id) {
-    //         console.log(this.axios)
-    //         this.axios.post('/cart-add-item', { productId: id }).then((response) => {
-    //             //第一個參數:去哪裡，第二個參數是內容 productId是物件
-    //             console.log(response)
-    //             this.$router.push('/cart')
-    //         })
-    //     }
-    // }
+
 }
 
 </script>

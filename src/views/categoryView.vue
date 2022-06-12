@@ -4,7 +4,7 @@
         <div class="row justify-content-start">
             <sideBar></sideBar>
             <!-- 商品區 -->
-            <div class="col-12  col-md-9">
+            <div class="col  col-md-9">
                 <div class="row type-content">
 
                     <div v-for="categoryItem in categoryList" class="col-6 col-sm-4 col-md-3 saler row">

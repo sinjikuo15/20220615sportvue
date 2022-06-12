@@ -29,14 +29,14 @@
             <div class="col-12  col-md-9">
                 <div class="row type-content">
 
-                    <div v-for="maleTopItem in maleTopList" class="col-6 col-sm-4 col-md-3 saler row">
+                    <div v-for="categoryItem in categoryList" class="col-6 col-sm-4 col-md-3 saler row">
                         <figure style="max-width:200px">
-                            <a href=""><img :src="maleTopItem.imageUrl" alt="" style="max-width: 100%;">
+                            <a href=""><img :src="categoryItem.imageUrl" alt="" style="max-width: 100%;">
                             </a>
 
-                            <router-link :to="`/products/${maleTopItem.id}`" class="price-btn">詳細資訊</router-link>
-                            <p>{{ maleTopItem.title }} </p>
-                            <p>售價：{{ maleTopItem.price }}元</p>
+                            <router-link :to="`/products/${categoryItem.id}`" class="price-btn">詳細資訊</router-link>
+                            <p>{{ categoryItem.title }} </p>
+                            <p>售價：{{ categoryItem.price }}元</p>
                         </figure>
                     </div>
                 </div>
@@ -53,11 +53,11 @@ export default {
         this.axios.get('/shopList').then((response) => {
             console.log(response)
             this.resultShopList = response.data.data
-            var maleTopList = response.data.data.filter(item => {
+            var categoryList = response.data.data.filter(item => {
                 return item.gender === 'male' && item.category === 'top'
             })
-            this.maleTopList = maleTopList
-            console.log('maleTopList', maleTopList)
+            this.categoryList = categoryList
+            console.log('categoryList', categoryList)
 
         })
         this.axios.get('/cart').then((res) => {
@@ -68,7 +68,7 @@ export default {
 
     data() {
         return {
-            maleTopList: []
+            categoryList: []
         }
     },
 

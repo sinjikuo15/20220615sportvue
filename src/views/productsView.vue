@@ -4,28 +4,8 @@
     <div class="container-fluid">
         <div class="row justify-content-start">
             <!-- 左邊清單bar -->
-            <div class=" col-2 justify-content-start type-bar ">
-                <h3>分類</h3>
-                <h5>↬男士</h5>
-                <ul>
-                    <li><a href="">上衣</a></li>
-                    <li><a href="">褲子</a></li>
-                    <li><a href="">鞋子</a></li>
-                </ul>
-                <hr>
-                <h5>↬女士</h5>
-                <ul>
-                    <li><a href="">上衣</a></li>
-                    <li><a href="">褲子</a></li>
-                    <li><a href="">鞋子</a></li>
-                </ul>
-                <hr>
-                <h5>↬兒童/青少年</h5>
-                <ul>
-                    <li><a href="">上衣</a></li>
-                    <li><a href="">鞋子</a></li>
-                </ul>
-            </div>
+            <sideBar></sideBar>
+
             <!-- 商品區 -->
             <div class="col-12  col-md-9">
                 <div class="row type-content">
@@ -48,7 +28,12 @@
     </div>
 </template>
 <script>
+import sideBar from '../components/sideBar.vue'
 export default {
+
+    components: {
+        sideBar
+    },
 
     mounted() {
         this.axios.get('/shopList').then((response) => {

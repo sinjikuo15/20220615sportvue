@@ -5,7 +5,7 @@ import LoginView from '../views/LoginView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import cartView from '../views/cartView.vue'
 import Product from '../views/ProductView.vue'
-import maleTop from '../views/maleTopView.vue'
+import categoryView from '../views/categoryView.vue'
 
 
 
@@ -40,9 +40,8 @@ const routes = [
     component: Product
   },
   {
-    path: '/male-top',
-    name: 'male-top',
-    component: maleTop
+    path: '/category',
+    component: categoryView
   },
   
 ]

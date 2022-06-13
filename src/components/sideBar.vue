@@ -1,8 +1,8 @@
 <template>
-    <div class="col-md-2 justify-content-start type-bar ">
-        <h3>分類</h3>
+    <div class=" col-2 justify-content-start type-bar ">
+        <h3 style="font-weight: 900;">分類</h3>
         <h5>
-            <router-link :to="{ path: '/category', query: { gender: 'male', category: 'all' } }">
+            <router-link class="Classification" :to="{ path: '/category', query: { gender: 'male', category: 'all' } }">
                 ↬男士
             </router-link>
         </h5>
@@ -25,7 +25,8 @@
         </ul>
         <hr>
         <h5>
-            <router-link :to="{ path: '/category', query: { gender: 'female', category: 'all' } }">
+            <router-link class="Classification"
+                :to="{ path: '/category', query: { gender: 'female', category: 'all' } }">
                 ↬女士
             </router-link>
         </h5>
@@ -48,7 +49,7 @@
         </ul>
         <hr>
         <h5>
-            <router-link :to="{ path: '/category', query: { gender: 'kid', category: 'all' } }">
+            <router-link class="Classification" :to="{ path: '/category', query: { gender: 'kid', category: 'all' } }">
                 ↬兒童/青少年
             </router-link>
         </h5>
@@ -70,24 +71,34 @@
 </template>
 
 <style>
+@media screen and (max-width:768px) {
+    .type-bar {
+        display: none;
+    }
+}
 .type-bar {
     box-sizing: border-box;
     margin: 0px 20px;
     background-color: #e7eaed;
     padding: 20px 20px;
 }
-
 .type-bar ul {
     list-style: none;
 }
-
 .type-bar ul a {
     text-decoration: none;
     color: gray;
 }
-
 .type-bar ul a:hover {
     text-decoration: none;
+    color: rgb(150, 177, 219);
+}
+.Classification {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+.Classification:hover {
     color: rgb(150, 177, 219);
 }
 </style>

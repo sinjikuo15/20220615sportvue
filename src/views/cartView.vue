@@ -32,7 +32,7 @@
                             <td>{{ cart.cartItem.quantity }}</td>
                             <td>{{ cart.price }}</td>
                             <td class="list-unstyle">
-                                <button class="add-btn ">+1</button>
+                                <button class="add-btn">+1</button>
 
                                 <button class="delete-btn " @click="removeResult(cart.id)">-1</button>
 
@@ -78,19 +78,23 @@
 table {
     background-color: #fff;
 }
+
 td {
     vertical-align: middle
 }
+
 .add-btn {
     background: linear-gradient(180deg, #fef63a 0, #eec423);
     padding: 0px 8px;
     border: 0px;
     border-radius: 5px;
 }
+
 .add-btn:hover {
     background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
     transition: 0.5s;
 }
+
 .delete-btn {
     background: linear-gradient(180deg, #fef63a 0, #eec423);
     padding: 0px 10px;
@@ -98,14 +102,17 @@ td {
     border-radius: 5px;
     margin-top: 10px;
 }
+
 .delete-btn:hover {
     background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
     transition: 0.5s;
 }
+
 .bi-cart-check {
     margin-left: 5px;
     font-size: 20px;
 }
+
 /* 購物標題 */
 .cart-content {
     background-color: rgb(59, 118, 185);
@@ -114,12 +121,15 @@ td {
     font-size: 20px;
     letter-spacing: 2px;
 }
+
 .sale-content {
     color: gray;
 }
+
 .list-unstyle ul {
     list-style: none;
 }
+
 /* 明細標題 */
 .detail-content {
     background-color: rgb(111, 156, 208);
@@ -128,16 +138,19 @@ td {
     font-size: 20px;
     letter-spacing: 2px;
 }
+
 .total {
     font-size: 20px;
     /* font-weight: bold; */
 }
+
 .confirm {
     background: linear-gradient(180deg, #fef63a 0, #eec423);
     padding: 10px 20px;
     border: 0px;
     border-radius: 5px;
 }
+
 .confirm:hover {
     background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
     transition: 0.5s;
@@ -148,14 +161,7 @@ td {
 export default {
     inject: ['reload'],
     mounted() {
-        this.axios.get('/cart').then((res) => {
-            console.log(res)
-            const { products: resultCartList } = res.data
-            console.log(res.data)
-            this.resultCartList = resultCartList
-            this.amount = res.data.amount
-            console.log(res.data.amount)
-        })
+        this.getCartItem()
     },
     data() {
         return {
@@ -170,20 +176,28 @@ export default {
     },
     methods: {
         removeResult(id) {
-            console.log("axios", this.axios)
+            // console.log("axios", this.axios)
             this.axios.post('/cart-delete-item', { productId: id }).then((response) => {
                 //第一個參數:去哪裡，第二個參數是內容 productId是物件
                 console.log("res", response)
                 this.reload()
             })
         },
-        // hasItem(){
-        //     if(resultCartList.length > 0){
-        //         return hasItem===true
-        //     }else{
-        //         return hasItem===false
-        //     }
-        // }
-    }
+        getCartItem() {
+            this.axios.get('/cart').then((res) => {
+                console.log(res)
+                const { products: resultCartList } = res.data
+                console.log("data",res.data)
+                this.resultCartList = resultCartList
+                this.amount = res.data.amount
+                console.log("amount",res.data.amount)
+            })
+        }
+    },
+    // watch:{
+    //      resultCartList: function () {
+    //         this.getCartItem()
+    //     }
+    // }
 }
 </script> 

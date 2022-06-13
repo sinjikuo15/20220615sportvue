@@ -55,6 +55,7 @@
 <script>
 
 export default {
+    inject: ['reload'],
     data() {
         return {
             email: '',
@@ -74,6 +75,7 @@ export default {
                 if(msgCode === 200) {
                     this.$router.push('/')
                 }
+                
             })
         }
     }

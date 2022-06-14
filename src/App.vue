@@ -287,6 +287,7 @@ export default {
     async mounted() {
         await this.$store.dispatch('getLoginStatus')
         console.log('loginStatus', this.$store.state.loginStatus)
+
     },
     provide() {
         return {
@@ -296,7 +297,6 @@ export default {
     data() {
         return {
             isRouterAlive: true,
-            // loginStatus: 0
         }
     },
     methods: {
@@ -306,10 +306,10 @@ export default {
                 this.isRouterAlive = true
             })
         },
-        logOut() {
-            this.axios.post('/logout').then((response) => {
+        async logOut() {
+            await this.axios.post('/logout').then((response) => {
                 console.log("logout", response)
-                this.reload()
+                this.$store.dispatch('getLoginStatus')
             })
         }
     },

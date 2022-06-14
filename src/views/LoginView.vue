@@ -55,7 +55,6 @@
 <script>
 
 export default {
-    inject: ['reload'],
     data() {
         return {
             email: '',
@@ -63,23 +62,28 @@ export default {
         }
     },
     methods: {
-        doLogin() {
-            this.$store.commit({
-                type: 'getLoginStatus'
-            })
+        async doLogin() {
+            
             console.log(this.axios)
             const submitForm = {
                 email: this.email,
                 password: this.password
             }
-            this.axios.post('/login', submitForm).then((response) => {
+            await this.axios.post('/login', submitForm).then((response) => {
                 console.log(response)
                 const {msgCode,message} = response.data
+                this.$store.dispatch('getLoginStatus')
                 if(msgCode === 200) {
                     this.$router.push('/')
                 }
                 
             })
+            
+        }
+    },
+    computed:{
+        mutationsLoginStatus() {
+            return this.$store.state.loginStatus
         }
     }
 }

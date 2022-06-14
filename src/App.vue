@@ -5,13 +5,13 @@
         <div class="container-fluid member-information">
             <div class="row justify-content-end">
                 <div class="col-6"></div>
-                <div class="col" v-if="loginStatus === 1">
+                <div class="col" v-if="$store.state.loginStatus === 1">
                     <a href="/user">會員資料</a>
                 </div>
-                <div class="col" v-if="loginStatus === 0">
+                <div class="col" v-if="$store.state.loginStatus === 0">
                     <a href="/login">登入/註冊</a>
                 </div>
-                <div class="col" v-if="loginStatus === 1">
+                <div class="col" v-if="$store.state.loginStatus === 1">
                     <a href="/" @click="logOut()">登出</a>
                 </div>
                 <div class="col">
@@ -279,22 +279,24 @@
 </template>
 
 <script>
+import store from './store'
+
 export default {
 
     name: 'app',
-    mounted() {
-        this.getLoginStatus()
+    async mounted() {
+        await this.$store.dispatch('getLoginStatus')
+        console.log('loginStatus', this.$store.state.loginStatus)
     },
     provide() {
         return {
             reload: this.reload,
-            getLoginStatus: this.getLoginStatus
         }
     },
     data() {
         return {
             isRouterAlive: true,
-            loginStatus: 0
+            // loginStatus: 0
         }
     },
     methods: {
@@ -304,32 +306,19 @@ export default {
                 this.isRouterAlive = true
             })
         },
-        getLoginStatus() {
-            this.axios.get('/loginStatus')
-                .then((response) => {
-                    console.log(response.data)
-                    if (response.data.loginStatus === 1) {
-                        this.loginStatus = 1
-                    } else {
-                        this.loginStatus = 0
-                    }
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        },
         logOut() {
             this.axios.post('/logout').then((response) => {
                 console.log("logout", response)
-                this.getLoginStatus()
+                this.reload()
             })
         }
     },
-    // watch:{
-    //     'loginStatus': function () {
-    //         this.getLoginStatus()
-    //     }
-    // }
+    computed: {
+        mutationsLoginStatus() {
+            return this.$store.state.loginStatus
+        }
+    }
+
 }
 </script>
 

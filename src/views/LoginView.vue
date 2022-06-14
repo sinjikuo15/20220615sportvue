@@ -64,6 +64,9 @@ export default {
     },
     methods: {
         doLogin() {
+            this.$store.commit({
+                type: 'getLoginStatus'
+            })
             console.log(this.axios)
             const submitForm = {
                 email: this.email,

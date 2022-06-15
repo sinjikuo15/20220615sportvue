@@ -81,3 +81,42 @@ export default {
 
 }
 </script>
+
+<style>
+.type-content {
+    padding: 10px 5px;
+}
+
+.saler figure {
+    display: inline-block;
+    max-width: 500px;
+    background-color: var(--main-color);
+    /* margin-right: 60px; */
+}
+
+.saler {
+    text-align: center;
+}
+
+.saler p {
+    line-height: 2;
+    font-size: 12px;
+}
+
+.price-btn {
+    color: gray;
+    text-decoration: none;
+    font-size: 12px;
+    background-color: #FDD935;
+    border-radius: 5px;
+    border: 0px;
+    padding: 5px 20px;
+    /* margin-bottom: 10px; */
+}
+
+.price-btn:hover {
+    color: black;
+    background-color: #d8bc42;
+    transition: 0.5s;
+}
+</style>

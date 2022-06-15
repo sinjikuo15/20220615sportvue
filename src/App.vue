@@ -233,33 +233,10 @@
 
     <!-- Footer區域 -->
     <div class="container-fluid main-footer py-3">
-        <div class="container-fluid row justify-content-around">
-            <div class="row col-4  col-md-8 justify-content-center ">
-                <ul class="list-unstyled col-md-6 col-lg-3">關於迪卡儂
-                    <li><a href="">公司簡介</a></li>
-                    <li><a href="">人才招募</a></li>
-                </ul>
-                <ul class="list-unstyled col-md-6 col-lg-3">顧客服務
-                    <li><a href="">退換貨流程</a></li>
-                    <li><a href="">客服信箱</a></li>
-                    <li><a href="">常見問題Ｑ＆Ａ</a></li>
-                    <li><a href="">團購方法</a></li>
-                </ul>
-                <ul class="list-unstyled col-md-6 col-lg-3">實體店服務
-                    <li><a href="">客製化印花</a></li>
-                    <li><a href="">球拍穿線</a></li>
-                    <li><a href="">維修服務</a></li>
-                </ul>
-                <ul class="list-unstyled col-md-6 col-lg-3">會員俱樂部
-                    <li><a href="">會員獎勵計畫</a></li>
-                    <li><a href="">點數使用說明</a></li>
-                    <li><a href="">點數使用據點</a></li>
-                </ul>
-            </div>
-
-            <div class="col-8 col-md-4 row justify-content-center">
+        <div class="container-fluid row justify-content-center">
+            <div class="col-12 col-md-4 row justify-content-center py-3">
                 <div class="row ">
-                    <div class="col-12">
+                    <div class="col-12 text-center">
                         <a href=""><i class="bi bi-youtube media-logo"></i></a>
                         <a href=""><i class="bi bi-facebook media-logo"></i></a>
                         <a href=""><i class="bi bi-instagram media-logo"></i></a>
@@ -272,6 +249,30 @@
                     </div>
                 </div>
             </div>
+            <div class="row col-12  col-md-8  text-center py-3">
+                <ul class="list-unstyled col-6 col-lg-3">關於迪卡儂
+                    <li><a href="">公司簡介</a></li>
+                    <li><a href="">人才招募</a></li>
+                </ul>
+                <ul class="list-unstyled col-6 col-lg-3">顧客服務
+                    <li><a href="">退換貨流程</a></li>
+                    <li><a href="">客服信箱</a></li>
+                    <li><a href="">常見問題Ｑ＆Ａ</a></li>
+                    <li><a href="">團購方法</a></li>
+                </ul>
+                <ul class="list-unstyled col-6 col-lg-3">實體店服務
+                    <li><a href="">客製化印花</a></li>
+                    <li><a href="">球拍穿線</a></li>
+                    <li><a href="">維修服務</a></li>
+                </ul>
+                <ul class="list-unstyled col-6 col-lg-3">會員俱樂部
+                    <li><a href="">會員獎勵計畫</a></li>
+                    <li><a href="">點數使用說明</a></li>
+                    <li><a href="">點數使用據點</a></li>
+                </ul>
+            </div>
+
+
         </div>
     </div>
 

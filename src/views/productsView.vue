@@ -1,12 +1,12 @@
 <template>
  <!-- 商品區 -->
     <div class="container-fluid">
-        <div class="row justify-content-start">
+        <div class="row justify-content-center">
             <!-- 左邊清單bar -->
             <sideBar></sideBar>
             <!-- 商品區 -->
-            <div class="col-12  col-md-9">
-                <div class="row type-content">
+            <div class="col-12  col-md-9 py-5">
+                <div class="row type-content justify-content-center">
                     <!-- 女上衣區 -->
                     <div v-for="shopItem in resultShopList" class="col-6 col-sm-4 col-md-3 saler row">
                         <figure style="max-width:200px">

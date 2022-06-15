@@ -79,7 +79,7 @@
                     </figure>
                 </div>
             </div>
-            <div class="col-md-7 ">
+            <div class="col-md-7" style="padding:0px">
                 <figure class="mori">
                     <a href="">
                         <img class="object-cover" src="https://media.decathlon.tw/media/astralweb/pagebulider/s1.jpg"
@@ -96,7 +96,7 @@
 
     <!-- 下方資訊區 -->
     <div class="container-fluid main-saler py-4">
-        <div class="row justify-content-end ">
+        <div class="row justify-content-center ">
             <div class="col-md-6 ">
                 <!-- <div class="saler"> -->
                 <figure>

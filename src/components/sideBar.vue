@@ -23,7 +23,7 @@
                 </router-link>
             </li>
         </ul>
-        <hr>
+        
         <h5>
             <router-link class="Classification"
                 :to="{ path: '/category', query: { gender: 'female', category: 'all' } }">
@@ -47,7 +47,7 @@
                 </router-link>
             </li>
         </ul>
-        <hr>
+        
         <h5>
             <router-link class="Classification" :to="{ path: '/category', query: { gender: 'kid', category: 'all' } }">
                 ↬兒童/青少年
@@ -84,6 +84,8 @@
 }
 .type-bar ul {
     list-style: none;
+    border-bottom: 1px solid rgb(182, 177, 177);
+    padding-bottom: 15px;
 }
 .type-bar ul a {
     text-decoration: none;
@@ -92,6 +94,10 @@
 .type-bar ul a:hover {
     text-decoration: none;
     color: rgb(150, 177, 219);
+}
+.type-bar li  {
+    position: relative; 
+    left: -25px;
 }
 .Classification {
     text-decoration: none;

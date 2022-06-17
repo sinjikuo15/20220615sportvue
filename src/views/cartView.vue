@@ -4,8 +4,8 @@
     <div class="container py-1">
         <div class="row  justify-content-around py-3">
             <!-- 購物車清單 -->
-            <div class="col-11  col-md-6 col-lg-7 py-2">
-                <div class="row cart-content justify-content-center">
+            <div class="col-12  col-md-6 col-lg-8 py-2">
+                <div class="row cart-title justify-content-center">
                     購物清單
                 </div>
                 <div class="text-center my-5" v-if="hasItem === false">
@@ -26,48 +26,54 @@
                     </thead>
                     <tbody>
                         <tr class="sale-content" v-for="cart in cartList">
-                            <figure style="max-width:200px">
-                                <img :src="cart.imageUrl" alt="" style="max-width: 100%;">
+                            <figure  style="max-width:200px">
+                                <img :src="cart.imageUrl" alt="" style="max-width: 100%;" class="commodity-pic">
 
                             </figure>
                             <td>
-                                <router-link :to="`/products/${cart.id}`">{{ cart.title }}</router-link>
+                                <router-link :to="`/products/${cart.id}`" class="cart-content">{{ cart.title }}
+                                </router-link>
                             </td>
                             <!-- <td>{{ cart.quantity }}</td> -->
-                            <td>{{ cart.price }}</td>
+                            <td style="letter-spacing: 2px;"> {{ cart.price }}</td>
                             <td class="list-unstyle">
-                                <button class="btn btn-primary" @click="deleteItem(cart.id)">-</button>
+                                <div class="row ">
+                                    <div class="col-12 text-center ">
+                                        <button class=" col-3 col-md-6 col-lg-2 add-delete "
+                                            @click="deleteItem(cart.id)">-</button>
 
-                                <input class="number" type="number" min="0.00" :value="cart.quantity" />
+                                        <input class="number col-6 col-md-12 col-lg-6" type="number" min="0.00"
+                                            :value="cart.quantity" />
 
-                                <button class="btn btn-primary" @click="addItem(cart.id)">+</button>
 
+                                        <button class=" col-3 col-md-6 col-lg-2 add-delete " @click="addItem(cart.id)">+
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
-                            <td>{{cart.price*cart.quantity}}</td>
-                            
+                            <td>{{ cart.price * cart.quantity }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="col-11  col-md-4 col-lg-3 py-2">
-                <div class="row detail-content justify-content-center ">
-                    購物明細
+            <div class="col-12  col-md-4 col-lg-3 py-2 ">
+                <div class="row detail-content justify-content-center "> 購物明細
                 </div>
-                <ul class="py-2 row justify-content-start py-3">
+                <ul class="py-2 row justify-content-start py-3 ">
 
-                    <div class="col-6 col-lg-7"> 小計</div>
-                    <div class="col-6 col-lg-5"> {{ amount }}元</div>
+                    <div class="col-9 col-lg-8"> 小計</div>
+                    <div class="col-3 col-lg-4"> {{ amount }}元</div>
 
                 </ul>
                 <ul class="row justify-content-start">
 
-                    <div class="col-6 col-lg-7"> 折扣</div>
-                    <div class="col-6 col-lg-5"> 0</div>
+                    <div class="col-9 col-lg-8"> 折扣</div>
+                    <div class="col-3 col-lg-4"> 0</div>
                 </ul>
                 <ul class="row justify-content-start total py-4">
 
-                    <div class="col-6 col-lg-7"> 總額 </div>
-                    <div class="col-6 col-lg-5">{{ amount }}元</div>
+                    <div class="col-9 col-lg-8"> 總額 </div>
+                    <div class="col-3 col-lg-4">{{ amount }}元</div>
                 </ul>
                 <div class="row justify-content-center">
                     <button class="col-4 col-md-6 confirm"> 送出訂單</button>
@@ -95,6 +101,7 @@ td {
     padding: 0px 8px;
     border: 0px;
     border-radius: 5px;
+    
 }
 
 .add-btn:hover {
@@ -102,18 +109,26 @@ td {
     transition: 0.5s;
 }
 
-.delete-btn {
+/* .delete-btn {
     background: linear-gradient(180deg, #fef63a 0, #eec423);
     padding: 0px 10px;
     border: 0px;
     border-radius: 5px;
     margin-top: 10px;
-}
+} */
 
 .delete-btn:hover {
     background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
     transition: 0.5s;
 }
+
+.add-delete {
+    background-color: #2A69B0;
+    color: white;
+    border: 1px solid transparent;
+    padding: 2px;
+}
+
 
 .bi-cart-check {
     margin-left: 5px;
@@ -121,12 +136,21 @@ td {
 }
 
 /* 購物標題 */
-.cart-content {
-    background-color: rgb(59, 118, 185);
+.cart-title {
+    background-color: #2A69B0;
     color: white;
-    padding: 10px 5px;
+    padding: 5px 5px;
     font-size: 20px;
     letter-spacing: 2px;
+}
+
+.cart-content {
+    color: black;
+    padding: 10px 5px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    font-weight: 600;
 }
 
 .sale-content {
@@ -162,6 +186,12 @@ td {
     background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
     transition: 0.5s;
 }
+
+@media screen and (max-width:768px) {
+    .commodity-pic{
+        display: none;
+    }
+}
 </style>
 
 <script>
@@ -184,7 +214,7 @@ export default {
         }
     },
     methods: {
-//只是一個動作function
+        //只是一個動作function
         addItem(id) {
             console.log(this.cartList)
             this.cartList = this.cartList.map((item) => {
@@ -221,9 +251,9 @@ export default {
 
             localStorage.setItem('totalAmount', JSON.stringify(totalAmount))
             return totalAmount
-            
+
         },
-       
+
     }
     // watch: {
     //     'totalAmount': function () {

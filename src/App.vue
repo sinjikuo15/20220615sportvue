@@ -4,7 +4,10 @@
         <!-- 最上面會員資訊 -->
         <div class="container-fluid member-information">
             <div class="row justify-content-end">
-                <div class="col-6"></div>
+                <div class="col-5"></div>
+                <div class="col" v-if="$store.state.loginStatus === 1">
+                    <p>嗨, {{UserList.displayName}}</p>
+                </div>
                 <div class="col" v-if="$store.state.loginStatus === 1">
                     <a href="/user">會員資料</a>
                 </div>
@@ -23,7 +26,7 @@
             </div>
         </div>
 
-        <!-- offcanvas bar(右邊彈出式視窗) -->
+        <!-- offcanvas bar(左邊彈出式視窗) -->
         <nav class=" navbar navbar-light bg-light offcanvas-bar">
             <div class="container-fluid justify-content-around">
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -299,7 +302,8 @@ export default {
     data() {
         return {
             isRouterAlive: true,
-            cart: []
+            cart: [],
+            UserList:[],
         }
     },
     methods: {
@@ -329,12 +333,23 @@ export default {
             }
             localStorage.setItem('cart',JSON.stringify(this.cart))
 
-        }
+        },
+        
     },
     computed: {
         mutationsLoginStatus() {
             return this.$store.state.loginStatus
         }
+    },
+    mounted() {
+        this.axios.get('/userList').then((response) => {
+            // console.log("response",response)
+            this.UserList = response.data.data
+
+        })
+        // this.axios.get('/cart').then((res) => {
+        //     console.log(res)
+        // })
     },
 
 }

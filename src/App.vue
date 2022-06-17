@@ -228,7 +228,8 @@
         </nav>
     </div>
 
-    <router-view v-if="isRouterAlive" />
+    <router-view v-if="isRouterAlive" @addCart="doAddCart" />
+    <!-- 接收兒子的呼叫 -->
 
 
     <!-- Footer區域 -->
@@ -288,7 +289,7 @@ export default {
     async mounted() {
         await this.$store.dispatch('getLoginStatus')
         console.log('loginStatus', this.$store.state.loginStatus)
-
+        this.cart = JSON.parse(localStorage.getItem('cart') || [])
     },
     provide() {
         return {
@@ -298,6 +299,7 @@ export default {
     data() {
         return {
             isRouterAlive: true,
+            cart: []
         }
     },
     methods: {
@@ -312,13 +314,28 @@ export default {
                 console.log("logout", response)
                 this.$store.dispatch('getLoginStatus')
             })
+        },
+        doAddCart(product) {
+            let flag = false
+            this.cart.map(function (item) {
+                if (item.id == product.id) {
+                    item.quantity += product.quantity
+                    flag = true
+                }
+                return item
+            })
+            if (flag == false) {
+                this.cart.push(product)
+            }
+            localStorage.setItem('cart',JSON.stringify(this.cart))
+
         }
     },
     computed: {
         mutationsLoginStatus() {
             return this.$store.state.loginStatus
         }
-    }
+    },
 
 }
 </script>

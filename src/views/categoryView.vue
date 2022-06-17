@@ -1,11 +1,11 @@
 <template>
     <!-- 商品區 -->
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-start">
             <sideBar></sideBar>
             <!-- 商品區 -->
-            <div class="col-12  col-md-9 py-5">
-                <div class="row type-content justify-content-center">
+            <div class="col  col-md-9">
+                <div class="row type-content">
 
                     <div v-for="categoryItem in categoryList" class="col-6 col-sm-4 col-md-3 saler row">
                         <figure style="max-width:200px">
@@ -32,9 +32,7 @@ export default {
     },
     mounted() {
         this.fetchProductsInfo()
-
     },
-
     data() {
         return {
             categoryList: []
@@ -67,56 +65,14 @@ export default {
                     else {
                         return item.gender === this.$route.query.gender && item.category === this.$route.query.category
                     }
-
                 })
                 this.categoryList = categoryList
                 console.log('categoryList', categoryList)
-
             })
             this.axios.get('/cart').then((res) => {
                 console.log(res)
             })
         }
     }
-
 }
 </script>
-
-<style>
-.type-content {
-    padding: 10px 5px;
-}
-
-.saler figure {
-    display: inline-block;
-    max-width: 500px;
-    background-color: var(--main-color);
-    /* margin-right: 60px; */
-}
-
-.saler {
-    text-align: center;
-}
-
-.saler p {
-    line-height: 2;
-    font-size: 12px;
-}
-
-.price-btn {
-    color: gray;
-    text-decoration: none;
-    font-size: 12px;
-    background-color: #FDD935;
-    border-radius: 5px;
-    border: 0px;
-    padding: 5px 20px;
-    /* margin-bottom: 10px; */
-}
-
-.price-btn:hover {
-    color: black;
-    background-color: #d8bc42;
-    transition: 0.5s;
-}
-</style>

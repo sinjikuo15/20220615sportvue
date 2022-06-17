@@ -18,26 +18,33 @@
                         <tr class="eng-font">
                             <th scope="col"></th>
                             <th scope="col">商品名稱</th>
-                            <th scope="col">數量</th>
                             <th scope="col">價格</th>
+                            <th scope="col">數量</th>
+                            <th scope="col">小計</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="sale-content" v-for="cart in resultCartList">
+                        <tr class="sale-content" v-for="cart in cartList">
                             <figure style="max-width:200px">
                                 <img :src="cart.imageUrl" alt="" style="max-width: 100%;">
 
                             </figure>
-                            <td>{{ cart.title }}</td>
-                            <td>{{ cart.cartItem.quantity }}</td>
+                            <td>
+                                <router-link :to="`/products/${cart.id}`">{{ cart.title }}</router-link>
+                            </td>
+                            <!-- <td>{{ cart.quantity }}</td> -->
                             <td>{{ cart.price }}</td>
                             <td class="list-unstyle">
-                                <button class="add-btn">+1</button>
+                                <button class="btn btn-primary" @click="deleteItem(cart.id)">-</button>
 
-                                <button class="delete-btn " @click="removeResult(cart.id)">-1</button>
+                                <input class="number" type="number" min="0.00" :value="cart.quantity" />
 
+                                <button class="btn btn-primary" @click="addItem(cart.id)">+</button>
 
                             </td>
+                            <td>{{cart.price*cart.quantity}}</td>
+                            
                         </tr>
                     </tbody>
                 </table>
@@ -48,7 +55,7 @@
                 </div>
                 <ul class="py-2 row justify-content-start py-3">
 
-                    <div class="col-6 col-lg-7"> 小記</div>
+                    <div class="col-6 col-lg-7"> 小計</div>
                     <div class="col-6 col-lg-5"> {{ amount }}元</div>
 
                 </ul>
@@ -59,8 +66,8 @@
                 </ul>
                 <ul class="row justify-content-start total py-4">
 
-                    <div class="col-6 col-lg-7"> 總額</div>
-                    <div class="col-6 col-lg-5">{{ amount }} 元</div>
+                    <div class="col-6 col-lg-7"> 總額 </div>
+                    <div class="col-6 col-lg-5">{{ amount }}元</div>
                 </ul>
                 <div class="row justify-content-center">
                     <button class="col-4 col-md-6 confirm"> 送出訂單</button>
@@ -161,43 +168,68 @@ td {
 export default {
     inject: ['reload'],
     mounted() {
-        this.getCartItem()
+        this.cartList = JSON.parse(localStorage.getItem('cart')) || []
+
+        this.totalAmount = Number(localStorage.getItem('totalAmount')) || 0
+
     },
     data() {
         return {
-            resultCartList: [],
+            cartList: [],
             description: '',
             quantity: '',
-            price: '',
-            amount: ''
-            // hasItem: true,
-            // total: amount
+            price: 0,
+            totalAmount: 0,
+            hasItem: true
         }
     },
     methods: {
-        removeResult(id) {
-            // console.log("axios", this.axios)
-            this.axios.post('/cart-delete-item', { productId: id }).then((response) => {
-                //第一個參數:去哪裡，第二個參數是內容 productId是物件
-                console.log("res", response)
-                this.reload()
+//只是一個動作function
+        addItem(id) {
+            console.log(this.cartList)
+            this.cartList = this.cartList.map((item) => {
+                if (item.id == id) {
+                    item.quantity++
+                }
+                return item
             })
+            localStorage.setItem('cart', JSON.stringify(this.cartList))
+            this.amount()
+
         },
-        getCartItem() {
-            this.axios.get('/cart').then((res) => {
-                console.log(res)
-                const { products: resultCartList } = res.data
-                console.log("data",res.data)
-                this.resultCartList = resultCartList
-                this.amount = res.data.amount
-                console.log("amount",res.data.amount)
+        deleteItem(id) {
+            console.log(this.cartList)
+            this.cartList = this.cartList.map((item) => {
+                if (item.id == id) {
+                    item.quantity--
+                }
+                return item
             })
-        }
+            localStorage.setItem('cart', JSON.stringify(this.cartList))
+            this.amount()
+        },
+
     },
-    // watch:{
-    //      resultCartList: function () {
-    //         this.getCartItem()
+    computed: {
+        //computed產出一個變數
+        amount() {
+            var totalAmount = 0
+            for (let i = 0; i < this.cartList.length; i++) {
+                totalAmount = this.cartList[i].quantity * this.cartList[i].price + totalAmount
+            }
+            console.log("totalAmount", totalAmount)
+
+            localStorage.setItem('totalAmount', JSON.stringify(totalAmount))
+            return totalAmount
+            
+        },
+       
+    }
+    // watch: {
+    //     'totalAmount': function () {
+    //         console.log('watch')
     //     }
     // }
+
 }
 </script> 

@@ -42,15 +42,27 @@
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <!-- <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5> -->
-                        <button class="offcanvas-title member-btn" id="offcanvasNavbarLabel">登入/註冊</button>
+                        <a type="button" href="/login" class="offcanvas-title member-btn" id="offcanvasNavbarLabel" v-if="$store.state.loginStatus === 0">登入/註冊</a>
+                        <a type="button" href="/" class="offcanvas-title member-btn" id="offcanvasNavbarLabel" v-if="$store.state.loginStatus === 1" @click="logOut()">登出</a>
+
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
                     <br>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item dropdown" v-if="$store.state.loginStatus === 1">
+                                <a class="nav-link" href="/user" role="button">
+                                    會員資料
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown" v-if="$store.state.loginStatus === 1">
+                                <a class="nav-link" href="/cart" role="button">
+                                    購物車
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="products" role="button">
+                                <a class="nav-link" href="/products" role="button">
                                     全部
                                 </a>
                             </li>
@@ -120,10 +132,6 @@
                                 </ul>
                             </li>
 
-                            <!-- <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form> -->
                         </ul>
                     </div>
                 </div>

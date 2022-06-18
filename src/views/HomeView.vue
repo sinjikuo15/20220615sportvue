@@ -1,5 +1,5 @@
 <template>
-<!-- 圖片輪播 -->
+    <!-- 圖片輪播 -->
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="3000">
@@ -46,15 +46,18 @@
         <!-- <div class="row "> -->
         <div class="row justify-content-center">
             <div class="row col-md-5 justify-content-center">
-                <div class="col-4 saler ">
+                <div class="col-5 saler" v-for="shopItem in resultShopList">
                     <figure>
-                        <a href=""><img class="object-cover"
-                                src="https://media.decathlon.tw/media/catalog/product/cache/10/small_image/150x/9df78eab33525d08d6e5fb8d27136e95/c/6/c665dcf7-dd81-4d54-b379-b1f0c222bddd_3185449.jpg"
-                                alt=""></a>
-                        <button class="price-btn">NT$ 129元</button>
-                        <p>男款純棉短袖上衣</p>
+                        <router-link :to="`/products/${shopItem.id}`">
+                            <img class="object-cover" :src="shopItem.imageUrl" alt="">
+                        </router-link>
+
+                        <router-link :to="`/products/${shopItem.id}`" class="price-btn">
+                            NT$ {{ shopItem.price }}元
+                        </router-link>
+                        <p>{{ shopItem.title }}</p>
                     </figure>
-                    <figure>
+                    <!-- <figure>
                         <a href=""><img class="object-cover"
                                 src="https://media.decathlon.tw/media/catalog/product/cache/10/small_image/150x/9df78eab33525d08d6e5fb8d27136e95/1/2/12-pixl-2157312_8488035.jpg"
                                 alt=""></a>
@@ -76,7 +79,7 @@
                                 alt=""></a>
                         <button class="price-btn">NT$ 149元</button>
                         <p>【出清】女款初階健身短袖上衣</p>
-                    </figure>
+                    </figure> -->
                 </div>
             </div>
             <div class="col-md-7" style="padding:0px">
@@ -147,7 +150,7 @@ export default {
     mounted() {
         this.axios.get('/shopList').then((response) => {
             console.log(response)
-            this.resultShopList = response.data.data
+            this.resultShopList = response.data.data.slice(0, 4)
         })
         this.axios.get('/cart').then((res) => {
             console.log(res)

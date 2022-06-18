@@ -12,13 +12,13 @@
                 <p>售價：{{ price }}</p>
                 <p>商品描述: {{ description }}</p>
 
-                <div class="quantity input-group">
-                    <button class="btn btn-primary" @click="decrement()">-</button>
+                <div class="row quantity input-group justify-content-start">
+                    <button class="add-delete col-2 col-sm-1 col-md-2 col-lg-1" @click="decrement()">-</button>
 
-                    <input class="number" type="number" min="0.00" v-model="quantity" />
+                    <input style="border:1px solid gray" class="number col-6" type="number" min="0.00" v-model="quantity" />
 
-                    <button class="btn btn-primary" @click="increment()">+</button>
-                    <button @click="addCart($route.params.productId,quantity)">加入購物車</button>
+                    <button class="add-delete col-2 col-sm-1 col-md-2 col-lg-1" @click="increment()">+</button>
+                    <button @click="addCart($route.params.productId,quantity)" class="confirm col-6  col-md-8 ">加入購物車</button>
                     <!-- click後傳送productId和數量到下面的addCart() -->
                 </div>
             </div>
@@ -37,21 +37,26 @@
     width: 100%;
 }
 
-.add-btn {
-    background: linear-gradient(180deg, #fef63a 0, #eec423);
-    padding: 10px 20px;
-    border: 0px;
-    border-radius: 5px;
-}
-
-.add-btn:hover {
-    background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
-    transition: 0.5s;
+.add-delete {
+    background-color: #2A69B0;
+    color: white;
+    border: 1px solid transparent;
+    padding: 5px 10px;
 }
 
 .bi-cart-check {
     margin-left: 5px;
     font-size: 20px;
+}
+.confirm {
+    background: linear-gradient(180deg, #fef63a 0, #eec423);
+    padding: 10px 20px;
+    border: 0px;
+    /* border-radius: 5px; */
+}
+.confirm:hover {
+    background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
+    transition: 0.5s;
 }
 </style>
 <script>
@@ -88,14 +93,6 @@ export default {
     },
 
     methods: {
-        // addCart(id) {
-        //     console.log(this.axios)
-        //     this.axios.post('/cart-add-item', { productId: id }).then((response) => {
-        //         //第一個參數:去哪裡，第二個參數是內容 productId是物件
-        //         console.log(response)
-        //         this.$router.push('/cart')
-        //     })
-        // },
         addCart(id,quantity){
             this.$emit('addCart',{id,quantity,title:this.title,price: this.price,imageUrl:this.imageUrl})
             //用$emit呼叫父層app.vue，名字叫做addCart，物件是剛剛的productId跟quantity，但是改名為id這樣

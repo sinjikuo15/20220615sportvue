@@ -75,7 +75,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .list-unstyle ul {
     list-style: none;
     font-weight: bold;

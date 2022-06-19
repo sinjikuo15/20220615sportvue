@@ -4,6 +4,7 @@
             <!-- 購物車清單 -->
             <div class="col-12  col-md-6 col-lg-8 py-2">
                 <div class="row cart-title justify-content-center" v-if="hasItem === true">
+
                     購物清單
                 </div>
                 <div class="text-center my-5" v-if="hasItem === false">
@@ -54,7 +55,9 @@
                     </tbody>
                 </table>
             </div>
+
             <div class="col-12  col-md-4 col-lg-3 py-2" v-if="hasItem === true">
+
                 <div class="row detail-content justify-content-center "> 購物明細
                 </div>
                 <ul class="py-2 row justify-content-start py-3 ">

@@ -12,13 +12,21 @@
                 <p>售價：{{ price }}</p>
                 <p>商品描述: {{ description }}</p>
 
+<<<<<<< HEAD
                 <div class="row quantity input-group justify-content-start">
+=======
+                <div class="row quantity input-group justify-content-start" style="margin:0px">
+>>>>>>> 2129c437d613a29fdb244cd40d3e619dca72d741
                     <button class="add-delete col-2 col-sm-1 col-md-2 col-lg-1" @click="decrement()">-</button>
 
                     <input style="border:1px solid gray" class="number col-6" type="number" min="0.00" v-model="quantity" />
 
                     <button class="add-delete col-2 col-sm-1 col-md-2 col-lg-1" @click="increment()">+</button>
+<<<<<<< HEAD
                     <button @click="addCart($route.params.productId,quantity)" class="confirm col-6  col-md-8 ">加入購物車</button>
+=======
+                    <button @click="addCart($route.params.productId,quantity)" class="confirm col-6  col-md-8 " style="margin-top:10px">加入購物車</button>
+>>>>>>> 2129c437d613a29fdb244cd40d3e619dca72d741
                     <!-- click後傳送productId和數量到下面的addCart() -->
                 </div>
             </div>
@@ -42,6 +50,7 @@
     color: white;
     border: 1px solid transparent;
     padding: 5px 10px;
+<<<<<<< HEAD
 }
 
 .bi-cart-check {
@@ -58,6 +67,25 @@
     background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
     transition: 0.5s;
 }
+=======
+}
+
+.bi-cart-check {
+    margin-left: 5px;
+    font-size: 20px;
+}
+.confirm {
+    background: linear-gradient(180deg, #fef63a 0, #eec423);
+    padding: 10px 20px;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.confirm:hover {
+    background: linear-gradient(180deg, #fef63a 0, #ab922bdc);
+    transition: 0.5s;
+}
+>>>>>>> 2129c437d613a29fdb244cd40d3e619dca72d741
 </style>
 <script>
 export default {
@@ -94,7 +122,8 @@ export default {
 
     methods: {
         addCart(id,quantity){
-            this.$emit('addCart',{id,quantity,title:this.title,price: this.price,imageUrl:this.imageUrl})
+            this.$emit('addCart',{id,quantity,title:this.title,price: this.price,imageUrl:this.imageUrl});
+            alert ("加入成功")
             //用$emit呼叫父層app.vue，名字叫做addCart，物件是剛剛的productId跟quantity，但是改名為id這樣
         },
         increment() {

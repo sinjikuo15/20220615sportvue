@@ -35,11 +35,9 @@
                     <p>{{UserList.email}}</p>
                     <hr class="col-md-12">
                     <h4>目前綁定的帳號</h4>
-                    <p><i class="bi bi-facebook fb-icon"></i> Facebook</p>
-                    <hr class="col-md-12">
+                    <p><i class="bi bi-facebook fb-icon"></i> Facebook</p>                    
                     <div class="text-center py-3">
                         <button class="col-8 col-md-6 logout-btn">登出</button>
-
                     </div>
 
                 </div>

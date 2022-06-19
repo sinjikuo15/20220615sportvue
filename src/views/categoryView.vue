@@ -4,8 +4,10 @@
         <div class="row justify-content-center">
             <sideBar></sideBar>
             <!-- 商品區 -->
+
             <div class="col  col-md-9 py-5">
                 <div class="row type-content justify-content-center">
+
 
                     <div v-for="categoryItem in categoryList" class="col-6 col-sm-4 col-md-3 saler row">
                         <figure style="max-width:200px">
@@ -109,5 +111,7 @@ export default {
         color: black;
         background-color: #d8bc42;
         transition: 0.5s;
-    }
-    </style>
+
+
+    }</style>
+
